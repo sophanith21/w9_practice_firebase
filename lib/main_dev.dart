@@ -1,6 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:w9_practice_firebase/data/repositories/artists/artist_repository.dart';
 import 'package:w9_practice_firebase/data/repositories/artists/artist_repository_firebase.dart';
+import 'package:w9_practice_firebase/services/artists_songs_service.dart';
 
 import 'data/repositories/songs/song_repository_firebase.dart';
 import 'main_common.dart';
@@ -27,6 +28,15 @@ List<InheritedProvider> get devProviders {
 
     // 4 - Inject the artist repository
     Provider<ArtistRepository>(create: (_) => ArtistRepositoryFirebase()),
+
+    // 5 - Inject the artist song service
+    ProxyProvider2<SongRepository, ArtistRepository, ArtistsSongsService>(
+      update: (context, songRepository, artistRepository, previous) =>
+          ArtistsSongsService(
+            songRepository: songRepository,
+            artistRepository: artistRepository,
+          ),
+    ),
   ];
 }
 

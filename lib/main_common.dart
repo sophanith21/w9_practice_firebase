@@ -55,11 +55,12 @@ class _MyAppState extends State<MyApp> {
           },
           selectedItemColor: settingsState.theme.color,
           items: [
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Library'),
+
             BottomNavigationBarItem(
               icon: Icon(Icons.library_music),
               label: 'Artists',
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Library'),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: 'Settings',
